@@ -8,7 +8,7 @@ from fastapi import FastAPI
 app = FastAPI()
 
 
-@app.post('/summarize_text', response_model=RedisScheme)
+@app.post('/summarize_text', response_model=TextSummarizeResponse)
 async def summarize_text(params: TextSummarizeRequestParams):
     texts: List[str] = params.text if isinstance(params.text, list) else [params.text]
     texts = list(sorted(texts))
